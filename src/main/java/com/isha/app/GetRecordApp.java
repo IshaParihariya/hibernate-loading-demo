@@ -11,6 +11,37 @@ public class GetRecordApp
 {
     public static void main(String[] args)
     {
+        /*
+        Loading :
+        Loading = fetching entity data from the database into a Java object
+
+        get() immediately fetches the entity and returns null if not found,
+         while load() or getReference() returns a proxy object and throws an exception
+          when the entity is accessed but does not exist.
+
+ 1. Using get()
+session.get()
+     ↓
+SQL executes immediately
+     ↓
+Full object returned
+
+
+2. Using getReference() or load() => proxy object is created then the actual object i.e., 2 objects
+session.getReference()
+     ↓
+Proxy object created
+     ↓
+Access property
+     ↓
+SQL executes
+
+Note: getReference : preferred as used in new ones
+also lazyy loading is better as Better performance
+lazy vs eager :
+Lazy loading fetches data only when it is accessed (load or getReference),
+while eager loading fetches related data immediately when the entity is loaded(get).
+         */
         SessionFactory sessionFactory=  new Configuration().configure().buildSessionFactory();
         Session session=null;
         Transaction transaction=null;
@@ -25,6 +56,8 @@ public class GetRecordApp
             // new way (preferred)
             StudentDetail sd=session.getReference(StudentDetail.class,1);
             System.out.println("id: "+sd.getSid());
+            // after clicking enter in the console it will continue
+            //System.in.read(); //System.in.read() reads a single byte from the standard input stream and returns its ASCII value as an integer.
             System.out.println("name: "+sd.getSname());
             System.out.println("email :"+sd.getSemail());
             System.out.println("city :"+sd.getScity());

@@ -20,7 +20,7 @@ public class WithoutXMLConfig
         config.setProperty("hibernate.dialect","org.hibernate.dialect.MySQLDialect");
         config.setProperty("hibernate.show_sql","true");
         config.setProperty("hibernate.format_sql","true");
-        config.setProperty("hibernate.hbm2ddl.auto","create");
+        config.setProperty("hibernate.hbm2ddl.auto","update");
 
         //entity mapping
         config.addAnnotatedClass(StudentDetailForWithoutXML.class);

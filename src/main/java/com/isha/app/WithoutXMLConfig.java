@@ -1,6 +1,7 @@
 package com.isha.app;
 
 import com.isha.model.StudentDetailForWithoutXML;
+import jakarta.persistence.GeneratedValue;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -11,6 +12,8 @@ public class WithoutXMLConfig
 {
     public static void main(String[] args)
     {
+       // NOTE :  @GeneratedValue used
+        //the table in the db should have auto increment
         Configuration config=new Configuration();
         // spaces in between the configuration breaks the config.
         config.setProperty("hibernate.connection.driver_class","com.mysql.cj.jdbc.Driver");
@@ -30,8 +33,8 @@ public class WithoutXMLConfig
            Session session=sessionFactory.openSession();
            Transaction transaction=session.beginTransaction();
             StudentDetailForWithoutXML sd=new StudentDetailForWithoutXML();
-            sd.setSid(1);
-            sd.setSname("Cupcake");
+           // sd.setSid(1); : @GeneratedValue annotation used
+            sd.setSname("darling");
             sd.setSemail("abc@gmail.com");
             sd.setScity("Bengaluru");
             System.out.println(sd);

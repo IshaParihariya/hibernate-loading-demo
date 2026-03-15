@@ -10,6 +10,11 @@ import org.hibernate.cfg.Configuration;
 
 public class WithoutXMLConfig
 {
+    /*
+    Why must Hibernate entities have a no-argument constructor?
+Because Hibernate uses reflection to instantiate entity objects, which requires a default constructor.
+either public or protected default constructor.
+     */
     public static void main(String[] args)
     {
        // NOTE :  @GeneratedValue used
@@ -34,9 +39,9 @@ public class WithoutXMLConfig
            Transaction transaction=session.beginTransaction();
             StudentDetailForWithoutXML sd=new StudentDetailForWithoutXML();
            // sd.setSid(1); : @GeneratedValue annotation used
-            sd.setSname("darling");
-            sd.setSemail("abc@gmail.com");
-            sd.setScity("Bengaluru");
+            sd.setSname("Jennie");
+            sd.setSemail("xyz@gmail.com");
+            sd.setScity("Seoul");
             System.out.println(sd);
             // saving
             session.persist(sd);

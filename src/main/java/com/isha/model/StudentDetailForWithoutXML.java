@@ -9,11 +9,13 @@ public class StudentDetailForWithoutXML
 {
     @Id
     @Column(name="SID")
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // for automatically generating the primary key
-    // identity : used for mysql
-    // sequence : for oracle
+    // @GeneratedValue
+    // identity : for increment (used for mysql)
+    // sequence : generating sequence (for oracle)
     // auto : when u dont know which
     // the table in the db should have auto increment
+    @GeneratedValue(generator = "my_seq", strategy = GenerationType.SEQUENCE) // for automatically generating the primary key
+    @SequenceGenerator(name="my_seq",sequenceName = "My_OwnSequence",initialValue = 100,allocationSize = 1)
     public Integer sid;
     @Column(name="SNAME")
     public String sname;
